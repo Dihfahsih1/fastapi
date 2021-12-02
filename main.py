@@ -1,3 +1,7 @@
-def hello():
-  print('hello world')
-hello
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+  return{'message' : 'helloworld'}
