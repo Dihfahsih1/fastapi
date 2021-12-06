@@ -27,6 +27,7 @@ def find_post(id):
 def get_posts():
   return {'data' : my_posts}  
 
+#only post the postman dataa in json format and not text
 @app.post("/posts")
 def create_posts(post:Post):
   post_dict = post.dict()
