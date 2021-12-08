@@ -35,7 +35,7 @@ def create_posts(post:Post):
   my_posts.append(post_dict)
   return {"data": my_posts}
 
-@app.get("/posts{id}")
+@app.get("/posts/{id}")
 def get_post(id: int):
   post = find_post(id)
   return{"post_details":post}
