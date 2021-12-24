@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from random import randrange 
 
 app = FastAPI()
-#using schema to declare which data to save
+
 class Post(BaseModel):
   title:str
   content:str
@@ -35,6 +35,15 @@ def create_posts(post:Post):
   my_posts.append(post_dict)
   return {"data": my_posts}
 
+# the order of these routes matters e.g route single post can't come before route latest
+
+#route for latest posts
+@app.get("/posts/latest")
+def get_latest_post():
+  posts=my_posts[len(my_posts)-1]
+  return{"details": posts}
+
+#route for single post
 @app.get("/posts/{id}")
 def get_post(id: int):
   post = find_post(id)
